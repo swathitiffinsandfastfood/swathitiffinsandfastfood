@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-charcoal: #171714;
+    --color-warm-black: #20201C;
+    --color-cream: #F5F1E8;
+    --color-soft-beige: #EAE3D5;
+    --color-mustard: #D9A928;
+    --color-warm-gold: #C99724;
+    --color-terracotta: #A94D32;
+  }
+
+  body {
+    background-color: #F5F1E8;
+    color: #171714;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+.font-serif-title {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-editorial {
+  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+}
+
+.font-sans-body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #20201C;
+}
+::-webkit-scrollbar-thumb {
+  background: #383832;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D9A928;
+}
+
+/* Food Card Hover & Reveal Animations */
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.food-card-reveal {
+  opacity: 0;
+  animation: cardReveal 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.food-card {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.food-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px -5px rgba(23, 23, 20, 0.3), 0 10px 12px -6px rgba(23, 23, 20, 0.22);
+}
+
+.food-card .food-img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.food-card:hover .food-img {
+  transform: scale(1.08);
+}
+
+.food-card .food-gradient {
+  transition: opacity 0.45s ease;
+}
+
+.food-card:hover .food-gradient {
+  opacity: 0.96;
+}
+
+.food-card .food-text {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.food-card:hover .food-text {
+  transform: translateY(-4px);
+}
+

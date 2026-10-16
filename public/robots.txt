@@ -1,0 +1,6 @@
+# Robots.txt for Swathi Tiffins & Fast Food
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://swathitiffins.com/sitemap.xml

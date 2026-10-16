@@ -1,0 +1,6 @@
+{
+  "name": "Swathi Tiffins & Fast Food",
+  "description": "Modern, premium restaurant website for fresh South Indian tiffins, flavour-packed biryanis, and street-style fast food.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

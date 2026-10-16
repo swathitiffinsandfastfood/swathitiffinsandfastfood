@@ -1,0 +1,18 @@
+{
+  "name": "Swathi Tiffins & Fast Food",
+  "short_name": "Swathi Tiffins",
+  "description": "Authentic South Indian tiffins, crispy ghee dosas, fiery chicken fry biryanis, and street fast food prepared fresh to order at Swathi Tiffins & Fast Food in Hyderabad.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F1E8",
+  "theme_color": "#171714",
+  "orientation": "portrait-primary",
+  "categories": ["food", "restaurants", "shopping"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
