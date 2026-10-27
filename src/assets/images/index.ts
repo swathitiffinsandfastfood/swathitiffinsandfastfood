@@ -23,6 +23,7 @@ export const IMAGE_ASSETS = {
   chickenFryBiryani: '/images/chicken-fry-biryani.jpg',
   chickenMughlaiBiryani: '/images/chicken-mughlai-biryani.jpg',
   chilliChicken: '/images/chilli-chicken.jpg',
+  manchurian: '/images/manchurian.png',
 } as const;
 
 export type ImageAssetKey = keyof typeof IMAGE_ASSETS;
