@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { X, MessageCircle, Phone, Plus, Minus, AlertCircle } from 'lucide-react';
-import { RESTAURANT_CONFIG } from '../data/restaurantConfig';
+import { getDeliveryChargeAt, RESTAURANT_CONFIG } from '../data/restaurantConfig';
 import { MENU_ITEMS, MenuItem } from '../data/menuData';
 
 interface QuickOrderModalProps {
@@ -17,7 +17,8 @@ export const QuickOrderModal: React.FC<QuickOrderModalProps> = ({
   selectedSize,
 }) => {
   const { brand, contact, orderPolicy } = RESTAURANT_CONFIG;
-  const [orderType, setOrderType] = useState<'delivery' | 'takeaway'>('delivery');
+  const [orderType, setOrderType] = useState<'delivery' | 'takeaway' | null>(null);
+  const [currentTime, setCurrentTime] = useState(() => new Date());
   const [customerName, setCustomerName] = useState(() => {
     try {
       return localStorage.getItem('swathi_cust_name') || '';
@@ -40,6 +41,7 @@ export const QuickOrderModal: React.FC<QuickOrderModalProps> = ({
     }
   });
   const [addressError, setAddressError] = useState(false);
+  const [orderTypeError, setOrderTypeError] = useState(false);
   const [customNotes, setCustomNotes] = useState('');
   const addressInputRef = useRef<HTMLTextAreaElement>(null);
   const [activeItems, setActiveItems] = useState<{ [itemId: string]: number }>(() => {
@@ -52,6 +54,7 @@ export const QuickOrderModal: React.FC<QuickOrderModalProps> = ({
   // Reset or initialize items whenever modal opens or selectedDish changes
   useEffect(() => {
     if (isOpen) {
+      setOrderType(null);
       if (selectedDish) {
         setActiveItems({ [selectedDish.id]: 1 });
         if (selectedDish.hasSizes && selectedSize) {
@@ -61,6 +64,7 @@ export const QuickOrderModal: React.FC<QuickOrderModalProps> = ({
         setActiveItems({});
       }
       setAddressError(false);
+      setOrderTypeError(false);
 
       // Focus address field for quick input since it is mandatory
       const timer = setTimeout(() => {
@@ -72,9 +76,24 @@ export const QuickOrderModal: React.FC<QuickOrderModalProps> = ({
     }
   }, [isOpen, selectedDish, selectedSize]);
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const updateCurrentTime = () => setCurrentTime(new Date());
+    updateCurrentTime();
+    const timer = window.setInterval(updateCurrentTime, 60_000);
+    return () => window.clearInterval(timer);
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const validateAddress = () => {
+    if (!orderType) {
+      setOrderTypeError(true);
+      return false;
+    }
+
+    setOrderTypeError(false);
     if (!customerAddress.trim()) {
       setAddressError(true);
       addressInputRef.current?.focus();
@@ -102,7 +121,8 @@ export const QuickOrderModal: React.FC<QuickOrderModalProps> = ({
     .filter((entry): entry is { item: MenuItem; qty: number } => entry.item !== undefined);
 
   const subtotal = selectedList.reduce((sum, entry) => sum + getItemPrice(entry.item) * entry.qty, 0);
-  const total = subtotal;
+  const deliveryCharge = orderType === 'delivery' ? getDeliveryChargeAt(currentTime) : 0;
+  const total = subtotal + deliveryCharge;
 
   const generateWhatsAppMessage = () => {
     const orderNumber = `ST-${Math.floor(1000 + Math.random() * 9000)}`;
@@ -128,6 +148,10 @@ export const QuickOrderModal: React.FC<QuickOrderModalProps> = ({
       });
       msg += `━━━━━━━━━━━━━━━━━━━━━━\n`;
       msg += `*💰 BILL DETAILS:*\n`;
+      msg += `• Items Subtotal: ${orderPolicy.currencySymbol}${subtotal}\n`;
+      if (orderType === 'delivery') {
+        msg += `• Delivery Charge: ${orderPolicy.currencySymbol}${deliveryCharge}\n`;
+      }
       msg += `• Total Amount: ${orderPolicy.currencySymbol}${total}\n`;
     } else {
       msg += `(Inquiry regarding available dishes today)\n`;
@@ -202,7 +226,11 @@ export const QuickOrderModal: React.FC<QuickOrderModalProps> = ({
           <div className="grid grid-cols-2 gap-2 p-1 bg-[#EAE3D5] rounded-xl">
             <button
               type="button"
-              onClick={() => setOrderType('delivery')}
+              aria-pressed={orderType === 'delivery'}
+              onClick={() => {
+                setOrderType('delivery');
+                setOrderTypeError(false);
+              }}
               className={`py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                 orderType === 'delivery'
                   ? 'bg-[#171714] text-white shadow-sm'
@@ -213,7 +241,11 @@ export const QuickOrderModal: React.FC<QuickOrderModalProps> = ({
             </button>
             <button
               type="button"
-              onClick={() => setOrderType('takeaway')}
+              aria-pressed={orderType === 'takeaway'}
+              onClick={() => {
+                setOrderType('takeaway');
+                setOrderTypeError(false);
+              }}
               className={`py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                 orderType === 'takeaway'
                   ? 'bg-[#171714] text-white shadow-sm'
@@ -223,6 +255,15 @@ export const QuickOrderModal: React.FC<QuickOrderModalProps> = ({
               🛍️ Takeaway / Counter Pickup
             </button>
           </div>
+          {orderTypeError ? (
+            <p role="alert" className="text-[11px] font-semibold text-red-600">
+              Please choose doorstep delivery or takeaway to continue.
+            </p>
+          ) : !orderType ? (
+            <p className="text-[11px] text-[#20201C]/60">
+              Choose doorstep delivery or takeaway to continue with your order.
+            </p>
+          ) : null}
 
           {/* Quick Dish Selection Chips */}
           <div className="p-4 sm:p-5 bg-white rounded-xl border border-[#EAE3D5] shadow-xs space-y-3.5 my-1">
@@ -390,6 +431,11 @@ export const QuickOrderModal: React.FC<QuickOrderModalProps> = ({
                 <span className="text-[#20201C]/60 block text-[11px]">
                   Subtotal: ₹{subtotal}
                 </span>
+                {orderType === 'delivery' && (
+                  <span className="text-[#20201C]/60 block text-[11px]">
+                    Delivery charge: ₹{deliveryCharge}
+                  </span>
+                )}
               </div>
               <div className="text-right">
                 <span className="text-[11px] text-[#20201C]/60 block uppercase font-bold">Total</span>
@@ -440,4 +486,3 @@ export const QuickOrderModal: React.FC<QuickOrderModalProps> = ({
     </div>
   );
 };
-

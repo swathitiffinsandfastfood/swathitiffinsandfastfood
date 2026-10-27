@@ -17,6 +17,12 @@ export interface TimingShift {
   days: string[];
 }
 
+export interface DeliveryChargePeriod {
+  start: string;
+  end: string;
+  charge: number;
+}
+
 export interface RestaurantConfig {
   brand: {
     name: string;
@@ -70,7 +76,9 @@ export interface RestaurantConfig {
   orderPolicy: {
     currencySymbol: string;
     currencyCode: string;
+    timeZone: string;
     deliveryPackingCharge: number;
+    deliveryChargeSchedule: DeliveryChargePeriod[];
     takeawayPackingCharge: number;
     estimatedPrepTime: string;
     acceptedPaymentMethods: string[];
@@ -177,7 +185,9 @@ export const RESTAURANT_CONFIG: RestaurantConfig = {
   orderPolicy: {
     currencySymbol: '₹',
     currencyCode: 'INR',
-    deliveryPackingCharge: 0,
+    timeZone: 'Asia/Kolkata',
+    deliveryPackingCharge: 10,
+    deliveryChargeSchedule: [],
     takeawayPackingCharge: 0,
     estimatedPrepTime: '15–25 mins',
     acceptedPaymentMethods: [
@@ -220,6 +230,31 @@ export const RESTAURANT_CONFIG: RestaurantConfig = {
 /**
  * Generates Schema.org JSON-LD structured data for Restaurant / FastFoodRestaurant
  */
+export function getDeliveryChargeAt(date: Date = new Date()): number {
+  const { deliveryPackingCharge, deliveryChargeSchedule } = RESTAURANT_CONFIG.orderPolicy;
+  const [currentHour, currentMinute] = new Intl.DateTimeFormat('en-GB', {
+    timeZone: RESTAURANT_CONFIG.orderPolicy.timeZone,
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  }).format(date).split(':').map(Number);
+  const currentMinutes = currentHour * 60 + currentMinute;
+
+  for (const period of deliveryChargeSchedule) {
+    const [startHour, startMinute] = period.start.split(':').map(Number);
+    const [endHour, endMinute] = period.end.split(':').map(Number);
+    const startMinutes = startHour * 60 + startMinute;
+    const endMinutes = endHour * 60 + endMinute;
+    const isInPeriod = startMinutes <= endMinutes
+      ? currentMinutes >= startMinutes && currentMinutes < endMinutes
+      : currentMinutes >= startMinutes || currentMinutes < endMinutes;
+
+    if (isInPeriod) return period.charge;
+  }
+
+  return deliveryPackingCharge;
+}
+
 export function generateRestaurantJsonLd(config: RestaurantConfig = RESTAURANT_CONFIG) {
   return {
     '@context': 'https://schema.org',

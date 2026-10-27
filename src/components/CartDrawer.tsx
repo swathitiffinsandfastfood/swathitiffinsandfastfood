@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { X, Trash2, Plus, Minus, MessageCircle, CheckCircle2, ArrowRight, ShoppingBag, AlertCircle } from 'lucide-react';
 import { MenuItem } from '../data/menuData';
-import { RESTAURANT_CONFIG } from '../data/restaurantConfig';
+import { getDeliveryChargeAt, RESTAURANT_CONFIG } from '../data/restaurantConfig';
 
 export interface CartItemType {
   item: MenuItem;
@@ -26,12 +26,22 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 }) => {
   const { orderPolicy, contact, brand } = RESTAURANT_CONFIG;
   const [orderType, setOrderType] = useState<'delivery' | 'pickup'>('delivery');
+  const [currentTime, setCurrentTime] = useState(() => new Date());
   const [customerName, setCustomerName] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
   const [customerAddress, setCustomerAddress] = useState('');
   const [addressError, setAddressError] = useState(false);
   const [orderPlaced, setOrderPlaced] = useState<{ id: string; total: number } | null>(null);
   const addressInputRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const updateCurrentTime = () => setCurrentTime(new Date());
+    updateCurrentTime();
+    const timer = window.setInterval(updateCurrentTime, 60_000);
+    return () => window.clearInterval(timer);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -43,7 +53,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   };
 
   const subtotal = items.reduce((sum, ci) => sum + getItemPrice(ci) * ci.quantity, 0);
-  const grandTotal = subtotal;
+  const deliveryCharge = orderType === 'delivery' ? getDeliveryChargeAt(currentTime) : 0;
+  const grandTotal = subtotal + deliveryCharge;
 
   const validateAddress = () => {
     if (!customerAddress.trim()) {
@@ -78,6 +89,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     msg += `━━━━━━━━━━━━━━━━━━━━━━\n`;
     msg += `*💰 BILL BREAKDOWN:*\n`;
     msg += `• Items Subtotal: ${orderPolicy.currencySymbol}${subtotal}\n`;
+    if (orderType === 'delivery') {
+      msg += `• Delivery Charge: ${orderPolicy.currencySymbol}${deliveryCharge}\n`;
+    }
     msg += `*👉 GRAND TOTAL: ${orderPolicy.currencySymbol}${grandTotal}*\n`;
     msg += `• Payment: Cash on Delivery / UPI upon arrival\n`;
     msg += `━━━━━━━━━━━━━━━━━━━━━━\n`;
@@ -372,6 +386,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   <span>Item Subtotal:</span>
                   <span className="font-semibold tabular-nums text-[#171714]">₹{subtotal}</span>
                 </div>
+                {orderType === 'delivery' && (
+                  <div className="flex justify-between">
+                    <span>Delivery Charge:</span>
+                    <span className="font-semibold tabular-nums text-[#171714]">₹{deliveryCharge}</span>
+                  </div>
+                )}
                 <div className="pt-2 border-t border-[#EAE3D5] flex justify-between text-sm font-bold text-[#171714]">
                   <span>Total Amount:</span>
                   <span className="font-serif-title text-base text-[#171714] tabular-nums">₹{grandTotal}</span>
