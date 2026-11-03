@@ -62,9 +62,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             }}
             className="flex items-center gap-2.5 group text-left"
           >
-            <div className="w-8 h-8 rounded-full bg-[#D9A928] flex items-center justify-center text-[#171714] font-serif-title font-bold text-lg shadow-sm transition-transform duration-300 group-hover:scale-105">
-              {RESTAURANT_CONFIG.brand.monogram}
-            </div>
+            <img
+              src="/images/swathi-logo.png"
+              alt="Swathi Tiffins logo"
+              className="w-11 h-11 object-contain shadow-sm transition-transform duration-300 group-hover:scale-105"
+            />
             <div className="flex flex-col">
               <span className="font-serif-title text-xl md:text-2xl font-bold tracking-tight text-[#F5F1E8] group-hover:text-[#D9A928] transition-colors">
                 {RESTAURANT_CONFIG.brand.name}

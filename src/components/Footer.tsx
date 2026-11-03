@@ -18,9 +18,11 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2.5 mb-3">
-                <div className="w-8 h-8 rounded-full bg-[#D9A928] flex items-center justify-center text-[#171714] font-serif-title font-bold text-lg">
-                  {brand.monogram}
-                </div>
+                <img
+                  src="/images/swathi-logo.png"
+                  alt="Swathi Tiffins logo"
+                  className="w-11 h-11 object-contain"
+                />
                 <span className="font-serif-title text-2xl font-bold tracking-tight text-[#F5F1E8]">
                   {brand.name}
                 </span>
@@ -134,4 +136,3 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
-

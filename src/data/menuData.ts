@@ -5,6 +5,7 @@ export interface MenuItem {
   id: string;
   name: string;
   category: 'TIFFIN' | 'FAST FOOD';
+  menuSection?: 'Breakfast & Tiffins' | 'Dosa Specials' | 'Rice & Fried Rice' | 'Noodles' | 'Fast Food' | 'Snacks';
   categoryLabel?: string;
   price: number;
   priceDisplay: string;
@@ -47,8 +48,9 @@ export const TIFFIN_ITEMS: MenuItem[] = [
   },
   {
     id: 'dosa',
-    name: 'Dosa',
+    name: 'Masala Dosa',
     category: 'TIFFIN',
+    menuSection: 'Dosa Specials',
     categoryLabel: 'SIGNATURE TIFFIN',
     price: 40,
     priceDisplay: '₹40',
@@ -291,6 +293,88 @@ export const FAST_FOOD_ITEMS: MenuItem[] = [
 export const MENU_ITEMS: MenuItem[] = [
   ...TIFFIN_ITEMS,
   ...FAST_FOOD_ITEMS,
+];
+
+const pendingPrice = 'Price to confirm';
+
+export const FEATURED_ITEMS: MenuItem[] = [
+  TIFFIN_ITEMS[0],
+  TIFFIN_ITEMS[1],
+  {
+    id: 'plain-dosa',
+    name: 'Plain Dosa',
+    category: 'TIFFIN',
+    menuSection: 'Dosa Specials',
+    price: 0,
+    priceDisplay: pendingPrice,
+    description: 'A crisp dosa served with accompaniments.',
+    image: IMAGE_ASSETS.pesarattu,
+    isVeg: true,
+  },
+  {
+    id: 'poori',
+    name: 'Poori',
+    category: 'TIFFIN',
+    menuSection: 'Breakfast & Tiffins',
+    price: 0,
+    priceDisplay: pendingPrice,
+    description: 'A classic breakfast favourite.',
+    image: IMAGE_ASSETS.porota,
+    isVeg: true,
+  },
+  TIFFIN_ITEMS[2],
+  {
+    id: 'veg-fried-rice',
+    name: 'Veg Fried Rice',
+    category: 'FAST FOOD',
+    menuSection: 'Rice & Fried Rice',
+    price: 0,
+    priceDisplay: pendingPrice,
+    description: 'Wok-tossed rice with vegetables.',
+    image: IMAGE_ASSETS.chickenFriedRice,
+    isVeg: true,
+  },
+  {
+    id: 'veg-noodles',
+    name: 'Veg Noodles',
+    category: 'FAST FOOD',
+    menuSection: 'Noodles',
+    price: 0,
+    priceDisplay: pendingPrice,
+    description: 'Noodles tossed with vegetables.',
+    image: IMAGE_ASSETS.chickenNoodles,
+    isVeg: true,
+  },
+  {
+    id: 'gobi-manchurian',
+    name: 'Gobi Manchurian',
+    category: 'FAST FOOD',
+    menuSection: 'Fast Food',
+    price: 0,
+    priceDisplay: pendingPrice,
+    description: 'A crisp cauliflower Indo-Chinese favourite.',
+    image: IMAGE_ASSETS.chilliChicken,
+    isVeg: true,
+  },
+  {
+    id: 'paneer-fried-rice',
+    name: 'Paneer Fried Rice',
+    category: 'FAST FOOD',
+    menuSection: 'Rice & Fried Rice',
+    price: 0,
+    priceDisplay: pendingPrice,
+    description: 'Wok-tossed rice with paneer and vegetables.',
+    image: IMAGE_ASSETS.chickenMughlaiBiryani,
+    isVeg: true,
+  },
+];
+
+export const COMPLETE_MENU_ITEMS: MenuItem[] = [
+  ...FEATURED_ITEMS,
+  ...MENU_ITEMS.filter((item) => !FEATURED_ITEMS.some((featured) => featured.id === item.id)).map((item) => ({
+    ...item,
+    menuSection: item.menuSection ?? (item.category === 'TIFFIN' ? 'Breakfast & Tiffins' : 'Fast Food'),
+  })),
 ];
 
 export interface GalleryItem {
