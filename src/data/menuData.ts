@@ -125,7 +125,7 @@ export const TIFFIN_ITEMS: MenuItem[] = [
     priceDisplay: '₹40',
     description:
       'Flaky layered South Indian parotta freshly toasted on the tawa, served with rich salna.',
-    image: IMAGE_ASSETS.porota,
+    image: IMAGE_ASSETS.porotaMenu,
     tag: 'Flaky Layers',
     isVeg: true,
     prepTime: '8 mins',
@@ -416,7 +416,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'g-4',
     name: 'Layered Porota',
     category: 'Southern Classic',
-    image: IMAGE_ASSETS.porota,
+    image: IMAGE_ASSETS.porotaMenu,
     description:
       'Flaky layered South Indian parotta served with rich aromatic salna.',
   },

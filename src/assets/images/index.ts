@@ -18,6 +18,7 @@ export const IMAGE_ASSETS = {
   chapathi: '/images/chapathi.jpg',
   chapathiMenu: '/images/chapathi-menu.png',
   porota: '/images/porota.jpg',
+  porotaMenu: '/images/porota-menu.png',
   upmaPesarattu: '/images/upma-pesarattu.jpg',
   pesarattu: '/images/upma-pesarattu.jpg',
 
