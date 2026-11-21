@@ -142,7 +142,7 @@ export const TIFFIN_ITEMS: MenuItem[] = [
     priceDisplay: '₹50',
     description:
       'Crisp whole green gram crepe filled with savory spiced upma, served with ginger & coconut chutney.',
-    image: IMAGE_ASSETS.upmaPesarattu,
+    image: IMAGE_ASSETS.upmaPesarattuMenu,
     tag: 'Andhra Special',
     isVeg: true,
     prepTime: '8 mins',
@@ -467,5 +467,13 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     image: IMAGE_ASSETS.chapathiMenu,
     description:
       'Soft hand-rolled whole-wheat flatbreads served with rich spiced vegetable kurma.',
+  },
+  {
+    id: 'g-11',
+    name: 'Upma Pesarattu',
+    category: 'Andhra Special',
+    image: IMAGE_ASSETS.upmaPesarattuMenu,
+    description:
+      'Crisp whole green gram crepe filled with savory spiced upma, served with ginger and coconut chutney.',
   },
 ];

@@ -20,6 +20,7 @@ export const IMAGE_ASSETS = {
   porota: '/images/porota.jpg',
   porotaMenu: '/images/porota-menu.png',
   upmaPesarattu: '/images/upma-pesarattu.jpg',
+  upmaPesarattuMenu: '/images/upma-pesarattu-menu.png',
   pesarattu: '/images/upma-pesarattu.jpg',
 
   // Evening Fast Food & Biryani
