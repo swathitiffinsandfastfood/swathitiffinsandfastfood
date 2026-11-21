@@ -12,6 +12,7 @@ export const IMAGE_ASSETS = {
   idly: '/images/idly-sambar.jpg',
   idlyMenu: '/images/idly-menu.png',
   dosa: '/images/dosa.jpg',
+  masalaDosaMenu: '/images/masala-dosa-menu.png',
   vada: '/images/vada.jpg',
   chapathi: '/images/chapathi.jpg',
   porota: '/images/porota.jpg',

@@ -56,7 +56,7 @@ export const TIFFIN_ITEMS: MenuItem[] = [
     priceDisplay: '₹40',
     description:
       'Crisp golden crepe roasted with pure ghee, served with spiced potato masala & chutneys.',
-    image: IMAGE_ASSETS.dosa,
+    image: IMAGE_ASSETS.masalaDosaMenu,
     tag: 'Ghee Roasted',
     isSpecial: true,
     isVeg: true,
@@ -400,7 +400,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'g-2',
     name: 'Crispy Golden Dosa',
     category: 'Signature Tiffin',
-    image: IMAGE_ASSETS.dosa,
+    image: IMAGE_ASSETS.masalaDosaMenu,
     description:
       'Paper-thin roasted crepe with pure ghee and potato masala.',
   },
