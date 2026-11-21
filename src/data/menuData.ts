@@ -74,7 +74,7 @@ export const TIFFIN_ITEMS: MenuItem[] = [
     priceDisplay: '₹30',
     description:
       'Crispy golden lentil fritters with a fluffy interior, ginger, peppercorns & chutneys.',
-    image: IMAGE_ASSETS.vada,
+    image: IMAGE_ASSETS.vadaMenu,
     tag: 'Crispy Snack',
     isVeg: true,
     prepTime: '5 mins',
@@ -408,7 +408,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'g-3',
     name: 'Golden Medu Vada',
     category: 'Crispy Snack',
-    image: IMAGE_ASSETS.vada,
+    image: IMAGE_ASSETS.vadaMenu,
     description:
       'Lentil fritters seasoned with ginger and whole black pepper.',
   },
