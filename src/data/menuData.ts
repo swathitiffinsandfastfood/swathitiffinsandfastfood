@@ -38,7 +38,7 @@ export const TIFFIN_ITEMS: MenuItem[] = [
     priceDisplay: '₹30',
     description:
       'Four soft steamed South Indian rice cakes served with fresh coconut chutney & piping hot sambar.',
-    image: IMAGE_ASSETS.idly,
+    image: IMAGE_ASSETS.idlyMenu,
     tag: 'Steamed Fresh',
     isVeg: true,
     prepTime: '5 mins',

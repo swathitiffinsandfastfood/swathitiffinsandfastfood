@@ -10,6 +10,7 @@ export const IMAGE_ASSETS = {
 
   // Traditional South Indian Tiffins
   idly: '/images/idly-sambar.jpg',
+  idlyMenu: '/images/idly-menu.png',
   dosa: '/images/dosa.jpg',
   vada: '/images/vada.jpg',
   chapathi: '/images/chapathi.jpg',
