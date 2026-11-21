@@ -14,7 +14,7 @@ export const Gallery: React.FC<GalleryProps> = () => {
   // Filter categories
   const filterTabs = [
     { id: 'all', label: 'All Dishes', count: GALLERY_ITEMS.length },
-    { id: 'tiffin', label: 'Tiffins', count: 5 },
+    { id: 'tiffin', label: 'Tiffins', count: 6 },
     { id: 'fast-food', label: 'Fast Food', count: 3 },
     { id: 'biryani', label: 'Biryanis', count: 2 },
     { id: 'kitchen', label: 'Kitchen Craft', count: 1 },
@@ -51,11 +51,11 @@ export const Gallery: React.FC<GalleryProps> = () => {
 
   /**
    * Screen-optimized, mathematically balanced grid classes:
-   * 11 items total:
+   * 12 items total:
    * - Row 1 (Hero cards): 2 cards (6 cols + 6 cols = 12)
    * - Row 2 (Trio cards): 3 cards (4 cols + 4 cols + 4 cols = 12)
    * - Row 3 (Trio cards): 3 cards (4 cols + 4 cols + 4 cols = 12)
-   * - Row 4: 3 cards (4 cols + 4 cols + 4 cols = 12)
+   * - Row 4: 4 cards (3 cols each = 12)
    * On tablets (sm: breakpoint): Rows adapt cleanly to two cards per row.
    * On mobile: Every card is col-span-12 with responsive aspect ratios.
    */
@@ -79,8 +79,8 @@ export const Gallery: React.FC<GalleryProps> = () => {
       return 'col-span-12 sm:col-span-6 lg:col-span-4 h-64 sm:h-76 lg:h-80';
     }
 
-    // Row 4: final trio
-    return 'col-span-12 sm:col-span-6 lg:col-span-4 h-64 sm:h-76 lg:h-80';
+    // Row 4: final quartet
+    return 'col-span-12 sm:col-span-6 lg:col-span-3 h-64 sm:h-76 lg:h-80';
   };
 
   return (

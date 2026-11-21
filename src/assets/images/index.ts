@@ -22,6 +22,7 @@ export const IMAGE_ASSETS = {
   upmaPesarattu: '/images/upma-pesarattu.jpg',
   upmaPesarattuMenu: '/images/upma-pesarattu-menu.png',
   pesarattu: '/images/upma-pesarattu.jpg',
+  pesarattuMenu: '/images/pesarattu-menu.png',
 
   // Evening Fast Food & Biryani
   chickenFriedRice: '/images/chicken-fried-rice.jpg',

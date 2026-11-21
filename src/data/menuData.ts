@@ -159,7 +159,7 @@ export const TIFFIN_ITEMS: MenuItem[] = [
     priceDisplay: '₹50',
     description:
       'Nutritious whole green gram crepe with finely chopped onions, served with ginger chutney.',
-    image: IMAGE_ASSETS.pesarattu,
+    image: IMAGE_ASSETS.pesarattuMenu,
     tag: 'Andhra Special',
     isVeg: true,
     prepTime: '10 mins',
@@ -475,5 +475,13 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     image: IMAGE_ASSETS.upmaPesarattuMenu,
     description:
       'Crisp whole green gram crepe filled with savory spiced upma, served with ginger and coconut chutney.',
+  },
+  {
+    id: 'g-12',
+    name: 'Pesarattu',
+    category: 'Andhra Special',
+    image: IMAGE_ASSETS.pesarattuMenu,
+    description:
+      'Nutritious whole green gram crepe with finely chopped onions, served with ginger chutney.',
   },
 ];
