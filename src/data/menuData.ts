@@ -460,13 +460,4 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     description:
       'Crisp chicken cubes glazed with fiery green chillies and soy.',
   },
-  {
-    id: 'g-10',
-    name: 'Manchurian',
-    category: 'Indo-Chinese',
-    image: IMAGE_ASSETS.manchurian,
-    description:
-      'Crispy vegetable Manchurian tossed in a flavorful Indo-Chinese sauce with fresh vegetables and aromatic spices.',
-  },
 ];
-
