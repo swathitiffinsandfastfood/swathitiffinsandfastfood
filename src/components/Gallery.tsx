@@ -51,24 +51,16 @@ export const Gallery: React.FC<GalleryProps> = () => {
 
   /**
    * Screen-optimized, mathematically balanced grid classes:
-   * 9 items total:
+   * 10 items total:
    * - Row 1 (Hero cards): 2 cards (6 cols + 6 cols = 12)
    * - Row 2 (Trio cards): 3 cards (4 cols + 4 cols + 4 cols = 12)
    * - Row 3 (Trio cards): 3 cards (4 cols + 4 cols + 4 cols = 12)
-   * - Down Portion (Grand Finale Showcase): 1 full-screen width card (12 cols = 12)
-   * On tablets (sm: breakpoint): Row 1 & Down portion are balanced, trio rows adapt cleanly.
+   * - Row 4: 2 cards (6 cols + 6 cols = 12)
+   * On tablets (sm: breakpoint): Rows adapt cleanly to two cards per row.
    * On mobile: Every card is col-span-12 with responsive aspect ratios.
    */
   const getBentoLayoutClass = (idx: number, isFiltered: boolean) => {
-    // Row 4 / Down portion (Item 9, idx 8): Full-width cinematic showcase
-    if (idx === 8 && !isFiltered) {
-      return 'col-span-12 sm:col-span-12 lg:col-span-12 h-80 sm:h-96 lg:h-[440px]';
-    }
-
     if (isFiltered || layoutMode === 'grid') {
-      if (idx === 8 && !isFiltered) {
-        return 'col-span-12 sm:col-span-12 lg:col-span-12 h-80 sm:h-96 lg:h-[440px]';
-      }
       return 'col-span-12 sm:col-span-6 lg:col-span-4 h-72 sm:h-80 lg:h-84';
     }
 
@@ -87,7 +79,8 @@ export const Gallery: React.FC<GalleryProps> = () => {
       return 'col-span-12 sm:col-span-6 lg:col-span-4 h-64 sm:h-76 lg:h-80';
     }
 
-    return 'col-span-12 sm:col-span-12 lg:col-span-12 h-80 sm:h-96 lg:h-[440px]';
+    // Row 4: final pair of cards
+    return 'col-span-12 sm:col-span-6 lg:col-span-6 h-72 sm:h-80 lg:h-96';
   };
 
   return (

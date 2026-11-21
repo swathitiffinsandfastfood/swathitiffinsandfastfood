@@ -16,6 +16,7 @@ export const IMAGE_ASSETS = {
   vada: '/images/vada.jpg',
   vadaMenu: '/images/vada-menu.png',
   chapathi: '/images/chapathi.jpg',
+  chapathiMenu: '/images/chapathi-menu.png',
   porota: '/images/porota.jpg',
   upmaPesarattu: '/images/upma-pesarattu.jpg',
   pesarattu: '/images/upma-pesarattu.jpg',

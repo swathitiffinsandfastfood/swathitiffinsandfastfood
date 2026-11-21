@@ -108,7 +108,7 @@ export const TIFFIN_ITEMS: MenuItem[] = [
     priceDisplay: '₹40',
     description:
       'Two soft hand-rolled whole-wheat flatbreads served with rich spiced vegetable kurma.',
-    image: IMAGE_ASSETS.chapathi,
+    image: IMAGE_ASSETS.chapathiMenu,
     tag: 'Homestyle',
     isVeg: true,
     prepTime: '10 mins',
@@ -459,5 +459,13 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     image: IMAGE_ASSETS.chilliChicken,
     description:
       'Crisp chicken cubes glazed with fiery green chillies and soy.',
+  },
+  {
+    id: 'g-10',
+    name: 'Homestyle Chapathi',
+    category: 'Morning Tiffin',
+    image: IMAGE_ASSETS.chapathiMenu,
+    description:
+      'Soft hand-rolled whole-wheat flatbreads served with rich spiced vegetable kurma.',
   },
 ];
