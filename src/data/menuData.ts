@@ -91,7 +91,7 @@ export const TIFFIN_ITEMS: MenuItem[] = [
     priceDisplay: '₹30',
     description:
       'Four golden, fluffy Mysore bajjis served hot with fresh chutney.',
-    image: IMAGE_ASSETS.vada,
+    image: IMAGE_ASSETS.mysoreBajji,
     tag: 'Crispy Favourite',
     isVeg: true,
     prepTime: '8 mins',
@@ -406,11 +406,11 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'g-3',
-    name: 'Golden Medu Vada',
+    name: 'Golden Mysore Bajji',
     category: 'Crispy Snack',
-    image: IMAGE_ASSETS.vadaMenu,
+    image: IMAGE_ASSETS.mysoreBajji,
     description:
-      'Lentil fritters seasoned with ginger and whole black pepper.',
+      'Golden, fluffy Mysore bajjis served hot with fresh chutneys.',
   },
   {
     id: 'g-4',
