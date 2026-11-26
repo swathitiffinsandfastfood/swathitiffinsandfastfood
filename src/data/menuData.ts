@@ -17,7 +17,7 @@ export interface MenuItem {
     full: number;
   };
   description: string;
-  image: string;
+  image?: string;
   tag?: string;
   isSpecial?: boolean;
   isVeg?: boolean;
@@ -308,7 +308,7 @@ export const FEATURED_ITEMS: MenuItem[] = [
     price: 0,
     priceDisplay: pendingPrice,
     description: 'A crisp dosa served with accompaniments.',
-    image: IMAGE_ASSETS.pesarattu,
+    image: IMAGE_ASSETS.dosa,
     isVeg: true,
   },
   {
@@ -319,7 +319,7 @@ export const FEATURED_ITEMS: MenuItem[] = [
     price: 0,
     priceDisplay: pendingPrice,
     description: 'A classic breakfast favourite.',
-    image: IMAGE_ASSETS.porota,
+    image: IMAGE_ASSETS.poori,
     isVeg: true,
   },
   TIFFIN_ITEMS[2],
@@ -331,7 +331,6 @@ export const FEATURED_ITEMS: MenuItem[] = [
     price: 0,
     priceDisplay: pendingPrice,
     description: 'Wok-tossed rice with vegetables.',
-    image: IMAGE_ASSETS.chickenFriedRice,
     isVeg: true,
   },
   {
@@ -342,7 +341,6 @@ export const FEATURED_ITEMS: MenuItem[] = [
     price: 0,
     priceDisplay: pendingPrice,
     description: 'Noodles tossed with vegetables.',
-    image: IMAGE_ASSETS.chickenNoodles,
     isVeg: true,
   },
   {
@@ -353,7 +351,7 @@ export const FEATURED_ITEMS: MenuItem[] = [
     price: 0,
     priceDisplay: pendingPrice,
     description: 'A crisp cauliflower Indo-Chinese favourite.',
-    image: IMAGE_ASSETS.chilliChicken,
+    image: IMAGE_ASSETS.manchurian,
     isVeg: true,
   },
   {
@@ -364,7 +362,6 @@ export const FEATURED_ITEMS: MenuItem[] = [
     price: 0,
     priceDisplay: pendingPrice,
     description: 'Wok-tossed rice with paneer and vegetables.',
-    image: IMAGE_ASSETS.chickenMughlaiBiryani,
     isVeg: true,
   },
 ];

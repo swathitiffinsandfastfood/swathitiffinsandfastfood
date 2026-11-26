@@ -1,36 +1,41 @@
-/**
- * Swathi Tiffins & Fast Food - Official Image Asset Registry
- * Centralized, properly named image assets for all dishes, hero banners, and menu cards.
- */
+import chapathiPhoto from './chapathi.jpg';
+import chickenFriedRice from './chicken-fried-rice.jpg';
+import chickenFryBiryani from './chicken-fry-biryani.jpg';
+import chickenMughlaiBiryani from './chicken-mughlai-biryani.jpg';
+import chickenNoodles from './chicken-noodles.jpg';
+import chilliChicken from './chilli-chicken.jpg';
+import dosa from './dosa.jpg';
+import heroBanner from './hero-banner.jpg';
+import idlySambar from './idly-sambar.jpg';
+import porota from './porota.jpg';
+import swathiMenuCard from './swathi-menu-card.jpg';
+import upmaPesarattu from './upma-pesarattu.jpg';
+import vada from './vada.jpg';
 
 export const IMAGE_ASSETS = {
-  // Brand & Atmosphere
-  heroBanner: '/images/hero-banner.jpg',
-  menuCard: '/images/swathi-menu-card.jpg',
-
-  // Traditional South Indian Tiffins
-  idly: '/images/idly-sambar.jpg',
-  idlyMenu: '/images/idly-menu.png',
-  dosa: '/images/dosa.jpg',
+  heroBanner,
+  menuCard: swathiMenuCard,
+  idly: idlySambar,
+  idlyMenu: idlySambar,
+  dosa,
   masalaDosaMenu: '/images/masala-dosa-menu.png',
-  vada: '/images/vada.jpg',
-  vadaMenu: '/images/vada-menu.png',
+  vada,
+  vadaMenu: vada,
   mysoreBajji: '/images/mysore-bajji.png',
-  chapathi: '/images/chapathi.jpg',
-  chapathiMenu: '/images/chapathi-menu.png',
-  porota: '/images/porota.jpg',
-  porotaMenu: '/images/porota-menu.png',
-  upmaPesarattu: '/images/upma-pesarattu.jpg',
-  upmaPesarattuMenu: '/images/upma-pesarattu-menu.png',
-  pesarattu: '/images/upma-pesarattu.jpg',
+  chapathi: chapathiPhoto,
+  chapathiMenu: chapathiPhoto,
+  porota,
+  porotaMenu: porota,
+  upmaPesarattu,
+  upmaPesarattuMenu: upmaPesarattu,
+  pesarattu: '/images/pesarattu-menu.png',
   pesarattuMenu: '/images/pesarattu-menu.png',
-
-  // Evening Fast Food & Biryani
-  chickenFriedRice: '/images/chicken-fried-rice.jpg',
-  chickenNoodles: '/images/chicken-noodles.jpg',
-  chickenFryBiryani: '/images/chicken-fry-biryani.jpg',
-  chickenMughlaiBiryani: '/images/chicken-mughlai-biryani.jpg',
-  chilliChicken: '/images/chilli-chicken.jpg',
+  poori: '/images/chapathi.jpg',
+  chickenFriedRice,
+  chickenNoodles,
+  chickenFryBiryani,
+  chickenMughlaiBiryani,
+  chilliChicken,
   manchurian: '/images/manchurian.png',
 } as const;
 

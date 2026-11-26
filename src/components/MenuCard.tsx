@@ -51,13 +51,15 @@ export const MenuCard: React.FC<MenuCardProps> = ({
       
       {/* Top Image Container with generous height */}
       <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-[#20201C]">
-        <img
-          src={item.image}
-          alt={item.name}
-          className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-          loading="lazy"
-          referrerPolicy="no-referrer"
-        />
+        {item.image && (
+          <img
+            src={item.image}
+            alt={item.name}
+            className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            loading="lazy"
+            referrerPolicy="no-referrer"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
         {/* Favorite Icon Toggle */}

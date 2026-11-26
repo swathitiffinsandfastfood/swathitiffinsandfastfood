@@ -15,13 +15,15 @@ export const FoodCard: React.FC<FoodCardProps> = ({ item, index }) => {
       }}
     >
       {/* Background Food Photography (Fills Complete Card) */}
-      <img
-        src={item.image}
-        alt={item.name}
-        className="food-img absolute inset-0 w-full h-full object-cover object-center"
-        loading="lazy"
-        referrerPolicy="no-referrer"
-      />
+      {item.image && (
+        <img
+          src={item.image}
+          alt={item.name}
+          className="food-img absolute inset-0 w-full h-full object-cover object-center"
+          loading="lazy"
+          referrerPolicy="no-referrer"
+        />
+      )}
 
       {/* Dark Gradient Overlay at the Bottom */}
       <div className="food-gradient absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent opacity-85 pointer-events-none" />
